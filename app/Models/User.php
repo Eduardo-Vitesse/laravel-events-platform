@@ -63,4 +63,8 @@ class User extends Authenticatable
     public function events() {
         return $this->hasMany(Event::class);
     }
+
+    public function eventsAsParticipant() {
+        return $this->belongsToMany(User::class)->withPivot(['invited', 'present']);
+    }
 }

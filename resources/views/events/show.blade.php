@@ -19,7 +19,17 @@
                         <li><ion-icon name="play"></ion-icon> <span>{{$item}}</span></li>
                     @endforeach
                 </ul>
-                <a href="#" class="btn btn-primary" id="event-submit">Confirmar presença</a>
+                <form action="{{ route('join', ['id' => $event->id]) }}" method="POST">
+                    @csrf
+                    <a
+                        href="#"
+                        class="btn btn-primary"
+                        id="event-submit"
+                        onclick="event.preventDefault();this.closest('form').submit();"
+                    >
+                        Confirmar presença
+                    </a>
+                </form>
             </div>
             <div class="col-md-12" id="description-container">
                 <h3>Sobre o evento</h3>
